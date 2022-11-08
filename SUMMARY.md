@@ -6,4 +6,5 @@
 
 ## Operating Systems
 
-* [Linux](operating-systems/linux.md)
+* [Linux](operating-systems/linux/README.md)
+  * [Commands](operating-systems/linux/commands.md)
