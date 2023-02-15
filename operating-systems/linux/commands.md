@@ -2,4 +2,7 @@
 
 ## TMUX
 
-<img src="../../.gitbook/assets/image.png" alt="" data-size="original">
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+
+
