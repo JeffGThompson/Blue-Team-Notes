@@ -10,3 +10,8 @@
   * [Commands](operating-systems/linux/commands.md)
 * [Windows](operating-systems/windows/README.md)
   * [Shortcuts](operating-systems/windows/shortcuts.md)
+
+## Walkthroughs
+
+* [Tryhackme](walkthroughs/tryhackme/README.md)
+  * [Snort Challenge - The Basics](walkthroughs/tryhackme/snort-challenge-the-basics.md)
