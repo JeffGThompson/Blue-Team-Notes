@@ -213,9 +213,6 @@ alert TCP any any <> any any (msg:"GIF89A detected"; content:"|47 49 46 38 39 61
 
 ```
 sudo snort -c local.rules -r ftp-png-gif.pcap -A full -l .
-```
-
-```
 sudo snort -r snort.log* -X
 ```
 
