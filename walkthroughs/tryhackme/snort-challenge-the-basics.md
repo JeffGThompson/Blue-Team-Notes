@@ -218,11 +218,256 @@ sudo snort -r snort.log* -X
 
 <figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
+## Writing IDS Rules (Torrent Metafile)
+
+**Write a rule to detect the torrent metafile in the given pcap.**
+
+**local.rules**
+
+```
+alert TCP any any <> any any (msg:"Torrent Detected"; content:".torrent"; sid:10000003; rev:1;)
+```
+
+**What is the number of detected packets?**
+
+**Kali**
+
+```
+sudo snort -c local.rules -r torrent.pcap -A full -l .
+sudo snort -r snort.log* -X
+```
+
+<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
+
+## Troubleshooting Rule Syntax Errors
+
+**Fix the syntax error in local-1.rules file and make it work smoothly.**
+
+**local-1.rules**
+
+```
+alert TCP any 3372 -> any any (msg:"Troubleshooting 1"; sid:1000001; rev:1;)
+```
+
+**What is the number of the detected packets?**
+
+**Kali**
+
+```
+sudo snort -c local-1.rules -r mx-1.pcap -A full -l .
+```
+
+<figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+
+**Fix the syntax error in local-2.rules file and make it work smoothly.**
+
+**local-2.rules**
+
+```
+alert icmp any any -> any any (msg:"Troubleshooting 2"; sid:1000001; rev:1;)
+```
+
+**What is the number of the detected packets?**
+
+**Kali**
+
+```
+sudo snort -c local-2.rules -r mx-1.pcap -A full -l .
+```
+
+<figure><img src="../../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
+
+**Fix the syntax error in local-3.rules file and make it work smoothly.**
+
+**local-3.rules**
+
+```
+alert icmp any any -> any any (msg:"ICMP Packet Found"; sid:1000001; rev:1;)
+alert tcp any any -> any 80,443 (msg:"HTTPX Packet Found"; sid:1000002; rev:1;)
+```
+
+**What is the number of the detected packets?**
+
+**Kali**
+
+```
+sudo snort -c local-3.rules -r mx-1.pcap -A full -l .
+```
+
+<figure><img src="../../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
 
 
 
+**Fix the syntax error in local-4.rules file and make it work smoothly.**
+
+**local-4.rules**
+
+```
+alert icmp any any -> any any (msg:"ICMP Packet Found"; sid:1000001; rev:1;)
+alert tcp any any -> any 80,443 (msg:"HTTPX Packet Found"; sid:1000002; rev:1;)
+```
+
+**What is the number of the detected packets?**
+
+**Kali**
+
+```
+sudo snort -c local-4.rules -r mx-1.pcap -A full -l .
+```
+
+<figure><img src="../../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
+
+**Fix the syntax error in local-5.rules file and make it work smoothly.**
+
+**local-5.rules**
+
+```
+alert icmp any any <> any any (msg: "ICMP Packet Found"; sid:1000001; rev:1;)
+alert icmp any any <> any any (msg: "Inbound ICMP Packet Found"; sid:1000002; rev:1;)
+alert tcp any any -> any 80,443 (msg: "HTTPX Packet Found"; sid:1000003; rev:1;)
+```
+
+**What is the number of the detected packets?**
+
+**Kali**
+
+```
+sudo snort -c local-5.rules -r mx-1.pcap -A full -l .
+```
+
+<figure><img src="../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
+
+**Fix the syntax error in local-6.rules file and make it work smoothly.**
+
+**local-6.rules**
+
+```
+alert tcp any any <> any 80  (msg: "GET Request Found"; content:"|47 45 5sudo snort -c local-6.rules -r mx-1.pcap -A full -l .4|"; sid:100001; rev:1;)
+```
+
+**What is the number of the detected packets?**
+
+**Kali**
+
+```
+sudo snort -c local-6.rules -r mx-1.pcap -A full -l .
+```
+
+<figure><img src="../../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
+
+**Fix the syntax error in local-7.rules file and make it work smoothly.**
+
+**local-7.rules**
+
+```
+alert tcp any any <> any 80  (msg:"No Message"; content:"|2E 68 74 6D 6C|"; sid: 100001; rev:1;)
+```
+
+**Kali**
+
+```
+sudo snort -c local-7.rules -r mx-1.pcap -A full -l .
+```
 
 
+
+## Using External Rules (MS17-010)
+
+**Use the given rule file (local.rules) to investigate the ms1710 exploitation. What is the number of detected packets?**
+
+**Kali**
+
+```
+sudo snort -c local.rules  -A full -l . -r ms-17-010.pcap
+```
+
+<figure><img src="../../.gitbook/assets/image (25).png" alt=""><figcaption></figcaption></figure>
+
+**Clear the previous log and alarm files. Use local-1.rules empty file to write a new rule to detect payloads containing the "\IPC$" keyword. What is the number of detected packets?**
+
+**local-1.rules**
+
+```
+alert tcp any any -> any 445 (msg: "Exploit Detected!"; flow: to_server, established; content: "IPC$"; sid:2094285; rev: 3;)
+```
+
+**Kali**
+
+```
+sudo snort -c local-1.rules  -A full -l . -r ms-17-010.pcap
+sudo snort -r snort.log* -X
+```
+
+<figure><img src="../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (27).png" alt=""><figcaption></figcaption></figure>
+
+## Using External Rules (Log4j)
+
+**Use the given rule file (local.rules) to investigate the log4j exploitation.**
+
+**What is the number of detected packets?**
+
+**Kali**
+
+```
+sudo snort -c local.rules  -A full -l . -r log4j.pcap
+```
+
+<figure><img src="../../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
+
+\
+**Investigate the log/alarm files. How many rules were triggered?**
+
+<figure><img src="../../.gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure>
+
+\
+**Investigate the log/alarm files. What are the first six digits of the triggered rule sids?**
+
+**Kali**
+
+```
+sudo snort -c local.rules  -A Full -l .  -r log4j.pcap
+```
+
+<figure><img src="../../.gitbook/assets/image (30).png" alt=""><figcaption></figcaption></figure>
+
+**local-1.rules**
+
+```
+alert tcp any any -> any any (msg:"Payload 770-855 bytes"; dsize:770<>855; sid:100001; rev:1;)
+```
+
+**What is the number of detected packets?**
+
+**Kali**
+
+```
+sudo snort -c local-1.rules  -A full -l . -r log4j.pcap
+sudo snort -eX -r snort.log* | vi -
+```
+
+<figure><img src="../../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
+
+**Output**
+
+```
+KGN1cmwgLXMgNDUuMTU1LjIwNS4yMzM6NTg3NC8xNjIuMC4yMjguMjUzOjgwfHx3Z2V0IC1xIC1PLSA0NS4xNTUuMjA1LjIzMzo1ODc0LzE2Mi4wLjIyOC4yNTM6ODApfGJhc2g=
+```
+
+
+
+**CyberChef:** [https://gchq.github.io/CyberChef/](https://gchq.github.io/CyberChef/)
+
+<figure><img src="../../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
 
 
 
