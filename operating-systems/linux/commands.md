@@ -27,6 +27,10 @@ press Ctrl-b [ = to enter copy mode
 press Ctrl-s = to start search
 ```
 
+## vim
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
 ## ls
 
 ### Finds what directory someone ran a command in
@@ -167,4 +171,77 @@ grep -i "No Smb Transports found for the host \[someText\]"
 ```
 grep -R --exclude-dir=node_modules 'some pattern' /path/to/search
 ```
+
+
+
+## dig
+
+### Check if DNS is resolving host
+
+**Linux**
+
+```
+dig @$DNS_Server_You_Want_To_Test $Server_Your_Looking_Up
+```
+
+
+
+## scp
+
+### Receive folder from external machine to local machine
+
+**Linux**
+
+```
+scp $USERNAME@$LOCAL_IP:$/$FOLDER/ $FILE
+```
+
+### Send local folder on local machine to external machine
+
+**Linux**
+
+```
+scp $LOCAL_FOLDER $USERNAME@$EXTERNAL_IP:$FOLDER/
+```
+
+## git
+
+### Squash commits before making merge request
+
+**Linux**
+
+```
+git rebase -I HEAD~4 = 4 commits
+git rebase -I sdds8e3esd 
+```
+
+## telnet
+
+### Testing if SMTP works
+
+```
+telnet $SMTP_SERVER 25
+
+ehlo mydomain.com 
+mail from:<joe@myemail.com> 
+rcpt to:<jim@youremail.com> 
+data 
+This is a test, please do not respond 
+. 
+quit
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

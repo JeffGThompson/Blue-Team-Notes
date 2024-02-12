@@ -196,7 +196,7 @@ sudo snort -c local.rules -r ftp-png-gif.pcap -A full -l .
 sudo snort -r snort.log* -X
 ```
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 **Write a rule to detect the GIF file in the given pcap.**
 
@@ -216,7 +216,7 @@ sudo snort -c local.rules -r ftp-png-gif.pcap -A full -l .
 sudo snort -r snort.log* -X
 ```
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Writing IDS Rules (Torrent Metafile)
 
