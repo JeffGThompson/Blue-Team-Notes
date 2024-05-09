@@ -57,31 +57,44 @@ ps -aef --forest
 
 ## journalctl
 
-1. **Viewing Logs**:
-   * `journalctl`: Displays logs from the current boot session.
-   * `journalctl --boot=-1`: Displays logs from the previous boot session.
-   * `journalctl --since "2024-05-01 00:00:00" --until "2024-05-02 23:59:59"`: Displays logs within a specific time range.
-2. **Filtering Logs**:
-   * `journalctl _SYSTEMD_UNIT=unit_name.service`: Displays logs for a specific systemd unit (service).
-   * `journalctl _PID=1234`: Displays logs for a specific process ID (PID).
-   * `journalctl -u unit_name.service`: Displays logs for a specific systemd unit (service).
-   * `journalctl -p err`: Displays logs with a priority level of "err" (error) or higher.
-3. **Output Formatting**:
-   * `journalctl -o json`: Outputs logs in JSON format.
-   * `journalctl -o short`: Outputs logs in a compact, human-readable format.
-   * `journalctl -o verbose`: Outputs logs with additional metadata.
-4. **Real-time Logging**:
-   * `journalctl -f`: Displays logs in real-time, similar to `tail -f`.
-5. **Displaying Additional Information**:
-   * `journalctl --disk-usage`: Displays disk usage statistics of the journal.
-   * `journalctl --list-boots`: Lists all available boot sessions and their respective IDs.
-   * `journalctl --list-unit-files`: Lists available systemd unit files.
-6. **Other Options**:
-   * `journalctl --vacuum-size=1G`: Removes old journal files until the total disk space used by the journal is reduced to 1GB.
-   * `journalctl --rotate`: Forces rotation of the journal files.
-7. **Useful:**
-   * `journalctl -u sshd --since "2024-05-08 16:00:00" --until "2024-05-08 18:30:00"`: Check who logged in between two times
-   * `journalctl -u Splunkd --since "2024-05-08 17:00:00" --until "2024-05-08 18:30:00":` Check Splunk logs between two times
+### **Viewing Logs**:
+
+* `journalctl`: Displays logs from the current boot session.
+* `journalctl --boot=-1`: Displays logs from the previous boot session.
+* `journalctl --since "2024-05-01 00:00:00" --until "2024-05-02 23:59:59"`: Displays logs within a specific time range.
+
+### **Filtering Logs**:
+
+* `journalctl _SYSTEMD_UNIT=unit_name.service`: Displays logs for a specific systemd unit (service).
+* `journalctl _PID=1234`: Displays logs for a specific process ID (PID).
+* `journalctl -u unit_name.service`: Displays logs for a specific systemd unit (service).
+* `journalctl -p err`: Displays logs with a priority level of "err" (error) or higher.
+
+### **Output Formatting**:
+
+* `journalctl -o json`: Outputs logs in JSON format.
+* `journalctl -o short`: Outputs logs in a compact, human-readable format.
+* `journalctl -o verbose`: Outputs logs with additional metadata.
+
+### **Real-time Logging**:
+
+* `journalctl -f`: Displays logs in real-time, similar to `tail -f`.
+
+### **Displaying Additional Information**:
+
+* `journalctl --disk-usage`: Displays disk usage statistics of the journal.
+* `journalctl --list-boots`: Lists all available boot sessions and their respective IDs.
+* `journalctl --list-unit-files`: Lists available systemd unit files.
+
+### **Other Options**:
+
+* `journalctl --vacuum-size=1G`: Removes old journal files until the total disk space used by the journal is reduced to 1GB.
+* `journalctl --rotate`: Forces rotation of the journal files.
+
+### **Useful:**
+
+* `journalctl -u sshd --since "2024-05-08 16:00:00" --until "2024-05-08 18:30:00"`: Check who logged in between two times
+* `journalctl -u Splunkd --since "2024-05-08 17:00:00" --until "2024-05-08 18:30:00":` Check Splunk logs between two times
 
 
 
